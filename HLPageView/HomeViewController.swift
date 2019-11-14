@@ -16,10 +16,16 @@ class HomeViewController: UIViewController {
         
         let pageView = HLPageView.pageView()
         pageView.delegate = self
+
+//        配置样式参数（可选）
+        pageView.style = .adaptive
+        pageView.lineViewWidth = 30
+        pageView.spacing = 20
         pageView.normalFont = UIFont.systemFont(ofSize: 15)
         pageView.selectedFont = UIFont.systemFont(ofSize: 20)
         pageView.normalColor = UIColor.init(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         pageView.selectedColor = UIColor.init(red: 0.86, green: 0.078, blue: 0.235, alpha: 1)
+        
         self.view.addSubview(pageView)
         
         pageView.update(self.titles)

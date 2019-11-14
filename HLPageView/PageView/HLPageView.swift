@@ -29,7 +29,9 @@ class HLPageView: UIView {
     
     /// 按钮布局方式
     var style: HLPageViewStyle = .adaptive
-    
+    /// 如果有值，底部线的宽度将固定。否则和当前选中按钮宽度一样
+    var lineViewWidth: CGFloat?
+
     /// 未点击状态按钮颜色
     var normalColor: UIColor = .black
     /// 选中状态按钮颜色
@@ -200,7 +202,15 @@ class HLPageView: UIView {
         
         self.lineView.snp.remakeConstraints { (make) in
             
-            make.width.equalTo(self.lastButton!)
+            if self.lineViewWidth != nil {
+               
+                make.width.equalTo(self.lineViewWidth!)
+
+            }else {
+                
+                make.width.equalTo(self.lastButton!)
+
+            }
             make.height.equalTo(3)
             make.bottom.equalToSuperview()
             make.centerX.equalTo(self.lastButton!)
